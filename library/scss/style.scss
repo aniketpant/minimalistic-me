@@ -1,0 +1,365 @@
+/******************************************************************
+Site Name: Rawrrr
+Author: Aniket Pant
+
+Stylesheet: Main Stylesheet
+
+Here's where the magic happens. Here, you'll see we are calling in
+the separate media queries. The base mobile goes outside any query
+and is called at the beginning, after that we call the rest
+of the styles inside media queries.
+******************************************************************/
+
+
+//
+// IMPORTING STYLES
+//
+
+// import normalize
+@import "normalize";
+
+// import mixins
+@import "mixins";
+
+/*
+BASE (MOBILE) SIZE
+This are the mobile styles. It's what people see on their phones. If
+you set a great foundation, you won't need to add too many styles in
+the other stylesheets. Remember, keep it light: Speed is Important.
+*/
+
+// styles in base.scss
+@import "base";
+
+/*
+LARGER MOBILE DEVICES
+This is for devices like the Galaxy Note or something that's
+larger than an iPhone but smaller than a tablet. Let's call them
+tweeners.
+*/
+@media only screen and (min-width: 481px) {
+
+	// styles in 481up.scss
+	@import "481up";
+
+} // end of media query
+
+/*
+TABLET & SMALLER LAPTOPS
+This is the average viewing window. So Desktops, Laptops, and
+in general anyone not viewing on a mobile device. Here's where
+you can add resource intensive styles.
+*/
+@media only screen and (min-width: 768px) {
+
+	// import grids
+	@import "grid";
+
+	// styles in 768up.scss
+	@import "768up";
+
+} // end of media query
+
+/*
+DESKTOP
+This is the average viewing window. So Desktops, Laptops, and
+in general anyone not viewing on a mobile device. Here's where
+you can add resource intensive styles.
+*/
+@media only screen and (min-width: 1030px) {
+
+	// styles in 1030up.scss
+	@import "1030up";
+
+} // end of media query
+
+/*
+LARGE VIEWING SIZE
+This is for the larger monitors and possibly full screen viewers.
+*/
+@media only screen and (min-width: 1240px) {
+
+	// styles in 1240up.scss
+	@import "1240up";
+
+} // end of media query
+
+/*
+RETINA (2x RESOLUTION DEVICES)
+This applies to the retina iPhone (4s) and iPad (2,3) along with
+other displays with a 2x resolution. You can also create a media
+query for retina AND a certain size if you want. Go Nuts.
+*/
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min--moz-device-pixel-ratio: 1.5),
+       only screen and (min-device-pixel-ratio: 1.5) {
+
+	// styles in 2x.scss
+	@import "2x";
+
+} // end of media query
+
+/*
+iPHONE 5 MEDIA QUERY
+Want to get fancy for no good reason? Knock yourself out.
+*/
+@media (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+
+  // iPhone 5 or iPod Touch 5th generation styles (you can include your own file if you want)
+
+}
+
+/*
+PRINT STYLESHEET
+Feel free to customize this. Remember to add things that won't make
+sense to print at the bottom. Things like nav, ads, and forms should
+be set to display none.
+*/
+@media print {
+	@import "print";
+}
+
+// Custom Style
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import url(http://fonts.googleapis.com/css?family=Arvo:400,400italic,700,700italic);
+
+#container,
+.wrap {
+    margin: 0 auto;
+    padding: 40px 10px 0
+}
+
+body { font-family: 'Open Sans', sans-serif }
+
+h1, h2,
+.h1, .h2 { font-family: 'Arvo', sans-serif }
+
+h3, .h3 { font-weight: bold }
+
+a, a:visited { color: #82A805; text-decoration: none }
+
+a:hover { color: #827800; text-decoration: underline }
+
+div[role=header-content] {
+    margin-top: 40px;
+    border-bottom: 2px solid #ddd
+}
+
+header[role=banner] { margin: 40px 0 }
+
+header[role=banner] #inner-header a #logo {
+    margin: 0; padding: 0
+}
+
+.nav {
+    text-align: right;
+    background: none;
+    .current_page_item > a { color: #4AB915 }
+    .current_page_item > a:hover { color: #4AB915 }
+    li {
+        float: none;
+        ul {
+            &.sub-menu,
+            &.children {
+                background: none;
+            }
+        }
+        a {
+            color: #333;
+            background: none;
+            &:hover {
+                color: #000;
+                background: none;
+            }
+        }
+    }
+}
+
+header h1 {
+    color: #333;
+    font-family: 'Arvo', sans-serif;
+}
+
+article.post {
+    position: relative;
+    -moz-transition: opacity 0.25s linear;
+    -webkit-transition: opacity 0.25s linear;
+    transition: opacity 0.25s linear;
+    border-bottom: 4px solid #BDEF1E
+}
+
+body.archive article.post header p.meta time { left: -125px }
+
+article.post header p.meta time { left: -100px }
+
+article.post header h1 a {
+    color: #666;
+    font-size: 1.75rem;
+    font-family: 'Arvo', sans-serif
+}
+
+article.post header h1 a:active { background: rgba(0,0,0,0.15) }
+
+article.post header h1 a:hover { color: #333 }
+
+article.post:hover > header p.meta time {
+    -moz-transition: opacity 0.5s ease-in-out;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.post_content blockquote p {
+    width: 100%;
+    padding: 1em;
+    background: rgba(0,0,0,0.05)
+}
+
+article.category-poem .post_content p {
+    font-size: 1.25em;
+}
+
+.post_content img {
+    max-height: 100%; max-width: 100%
+}
+
+article a:hover {
+    text-decoration: none;
+}
+
+p.meta time {
+    position: absolute;
+    top: 75px;
+    font-size: 1.25em; font-weight: bold;
+    -moz-transform: rotate(-90deg);
+    -moz-transform-origin: 100% 100%;
+    -moz-transition: opacity 0.25s ease-in-out;
+    -ms-transform: rotate(-90deg);
+    -ms-transform-origin: 100% 100%;
+    -o-transform: rotate(-90deg);
+    -o-transform-origin: 100% 100%;
+    -webkit-transform: rotate(-90deg);
+    -webkit-transform-origin: 100% 100%;
+    -webkit-transition: opacity 0.25s ease-in-out;
+    opacity: 0;
+    transform: rotate(-90deg);
+    transform-origin: 100% 100%;
+    transition: opacity 0.25s ease-in-out;
+    z-index: -1;
+}
+
+.bones_page_navi li.bpn-current { border-bottom: 2px solid #BDEF1E }
+
+code {
+    font-size: 1.25em;
+    font-family: 'Inconsolata', monospace
+}
+
+.post_content a {
+    color: #82A805;
+    text-decoration: none
+}
+
+.post_content a:active {
+    color: #000;
+    background: #82A805
+}
+
+.post_content a:hover {
+    color: #fff;
+    background: #82A805
+}
+
+.widget h4.widgettitle {
+    padding: 0.5em 0;
+    font-size: 1.25em;
+    font-variant: small-caps;
+    border-bottom: none;
+    text-shadow: 0 0 1px rgba(0,0,0,0.15)
+}
+
+#comments span {
+    color: #82A805;
+    font-weight: normal
+}
+
+.commentlist .children { border-left: 2px solid #82A805 }
+
+.commentlist a.comment-reply-link {
+    color: #fff;
+    background: rgba(130,168,5,0.75)
+}
+
+a.comment-reply-link:hover { background: rgba(130,168,5,0.95) }
+
+.commentlist li .comment_content p { margin: 0.7335em 2.75em 1.5em }
+
+.commentlist .vcard { margin-left: 7em }
+
+#footer-links {  }
+#footer-links ul.footer-col {
+    display: inline-table;
+    width: 33%;
+    list-style: none
+}
+
+#footer-links ul.footer-col h4 { font-variant: small-caps }
+#footer-links ul.footer-col li {
+    display: inline-block;
+    width: 49%
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    background: #ccc;
+    color: #fff;
+    border: none;
+    padding: 0.5em;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.15)
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+    background: #aaa;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25)
+}
+
+#s {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 0 5px;
+    border-radius: 2px;
+    color: #adadad;
+    outline: none;
+    height: 25px;
+    width: 125px;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+#searchsubmit {
+    cursor: pointer;
+    display: inline-block;
+}
+
+span.code {
+    background: #eee;
+    padding: 1px 5px;
+}
+
+.thanks {
+    color: #999999;
+    float: left;
+    font-size: 0.9em;
+    margin: 1em 0;
+}
